@@ -1,0 +1,78 @@
+{
+  "name": "P1",
+  "tagType": "Folder",
+  "tags": [
+    {
+      "name": "ESP32",
+      "tagType": "Folder",
+      "tags": [
+        {
+          "name": "Temperature",
+          "parameters": {
+            "SourcePath": {
+              "dataType": "String",
+              "value": "[MQTT Engine]p1/esp32-01/telemetry/temperature"
+            }
+          },
+          "tagType": "UdtInstance",
+          "tags": [
+            {
+              "name": "Value",
+              "tagType": "AtomicTag"
+            },
+            {
+              "name": "HighLimit",
+              "tagType": "AtomicTag",
+              "value": 32.0
+            },
+            {
+              "name": "LowLimit",
+              "tagType": "AtomicTag",
+              "value": 20.0
+            }
+          ],
+          "typeId": "P1_AnalogSignal"
+        },
+        {
+          "alarms": [
+            {
+              "name": "ESP32 Offline",
+              "priority": "Critical"
+            }
+          ],
+          "expression": "if({[MQTT Engine]p1/esp32-01/status} \u003d \"online\", 1, 0)",
+          "name": "Online",
+          "tagType": "AtomicTag",
+          "valueSource": "expr"
+        },
+        {
+          "name": "Humidity",
+          "parameters": {
+            "SourcePath": {
+              "dataType": "String",
+              "value": "[MQTT Engine]p1/esp32-01/telemetry/humidity"
+            }
+          },
+          "tagType": "UdtInstance",
+          "tags": [
+            {
+              "name": "Value",
+              "tagType": "AtomicTag"
+            },
+            {
+              "name": "HighLimit",
+              "tagType": "AtomicTag",
+              "value": 85.0
+            },
+            {
+              "name": "LowLimit",
+              "tagType": "AtomicTag",
+              "value": 30.0
+            }
+          ],
+          "typeId": "P1_AnalogSignal"
+        }
+      ]
+    }
+  ]
+}

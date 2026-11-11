@@ -1,0 +1,67 @@
+{
+  "name": "P1_AnalogSignal",
+  "parameters": {
+    "SourcePath": {
+      "dataType": "String",
+      "value": null
+    }
+  },
+  "tagType": "UdtType",
+  "tags": [
+    {
+      "dataType": "Float8",
+      "name": "LowLimit",
+      "tagType": "AtomicTag",
+      "value": 0.0,
+      "valuePersistence": "Database",
+      "valueSource": "memory"
+    },
+    {
+      "dataType": "Float8",
+      "name": "HighLimit",
+      "tagType": "AtomicTag",
+      "value": 100.0,
+      "valuePersistence": "Database",
+      "valueSource": "memory"
+    },
+    {
+      "alarms": [
+        {
+          "deadband": 0.5,
+          "mode": "AboveValue",
+          "name": "High",
+          "priority": "High",
+          "setpointA": {
+            "bindType": "Expression",
+            "value": "{[.]HighLimit}"
+          }
+        },
+        {
+          "deadband": 0.5,
+          "mode": "BelowValue",
+          "name": "Low",
+          "priority": "Medium",
+          "setpointA": {
+            "bindType": "Expression",
+            "value": "{[.]LowLimit}"
+          }
+        }
+      ],
+      "dataType": "Float4",
+      "historicalDeadbandMode": "Off",
+      "historyEnabled": true,
+      "historyProvider": "P1_SQL_Historian",
+      "historySampleRate": 5000,
+      "historySampleRateUnits": "MS",
+      "name": "Value",
+      "sampleMode": "Periodic",
+      "sourceTagPath": {
+        "bindType": "parameter",
+        "binding": "{SourcePath}"
+      },
+      "tagType": "AtomicTag",
+      "valueSource": "reference"
+    }
+  ],
+  "typeId": ""
+}
