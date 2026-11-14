@@ -61,6 +61,12 @@
       },
       "tagType": "AtomicTag",
       "valueSource": "reference"
+    },
+    {
+      "expression": "if({[.]Value} \u003e {[.]HighLimit}, 2, if({[.]Value} \u003c {[.]LowLimit}, 1, 0))",
+      "name": "State",
+      "tagType": "AtomicTag",
+      "valueSource": "expr"
     }
   ],
   "typeId": ""

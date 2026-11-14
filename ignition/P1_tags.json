@@ -29,6 +29,10 @@
               "name": "LowLimit",
               "tagType": "AtomicTag",
               "value": 20.0
+            },
+            {
+              "name": "State",
+              "tagType": "AtomicTag"
             }
           ],
           "typeId": "P1_AnalogSignal"
@@ -63,6 +67,10 @@
               "name": "HighLimit",
               "tagType": "AtomicTag",
               "value": 85.0
+            },
+            {
+              "name": "State",
+              "tagType": "AtomicTag"
             },
             {
               "name": "LowLimit",
